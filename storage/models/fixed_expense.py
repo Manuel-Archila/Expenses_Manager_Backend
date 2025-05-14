@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Numeric, ForeignKey
+from sqlalchemy import Column, Date, Integer, String, Numeric, ForeignKey
 from sqlalchemy.orm import relationship
 from storage.database import Base
 
@@ -11,6 +11,7 @@ class FixedExpense(Base):
     frequency = Column(String)
     user_id = Column(Integer, ForeignKey("users.id"))
     category_id = Column(Integer, ForeignKey("categories.id"))
+    payment_date = Column(Date, nullable=True)
 
     user = relationship("User", back_populates="fixed_expenses")
     category = relationship("Category", back_populates="fixed_expenses")

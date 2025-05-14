@@ -67,7 +67,12 @@ class UserManager:
             return {
                 "access_token": access_token,
                 "refresh_token": refresh_token,
-                "token_type": "bearer"
+                "token_type": "bearer",
+                "user": {
+                    "id": user.id,
+                    "name": user.name,
+                    "email": user.email
+                }
             }
         except Exception as e:
             self.db.rollback()

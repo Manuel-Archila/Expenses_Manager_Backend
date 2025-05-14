@@ -27,7 +27,12 @@ class CategoryManager:
                 setattr(category, key, value)
             self.db.commit()
             self.db.refresh(category)
-            return {"is_success": True, "message": "Category updated successfully", "data": category}
+            return {"is_success": True, "message": "Category updated successfully", "data": {
+                "id": category.id,
+                "name": category.name,
+                "color": category.color,
+                "user_id": category.user_id
+            }}
         return {"is_success": False, "message": "Category not found or unauthorized"}
 
     def delete_category(self, category_id: int, user: User):
