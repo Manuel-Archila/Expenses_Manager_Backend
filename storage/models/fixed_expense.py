@@ -12,6 +12,7 @@ class FixedExpense(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
     category_id = Column(Integer, ForeignKey("categories.id"))
     payment_date = Column(Date, nullable=True)
+    notify = Column(String, nullable=True)
 
     user = relationship("User", back_populates="fixed_expenses")
     category = relationship("Category", back_populates="fixed_expenses")

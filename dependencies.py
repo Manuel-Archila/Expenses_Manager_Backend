@@ -2,6 +2,7 @@ from fastapi import Depends
 from managers.category import CategoryManager
 from managers.expense import ExpenseManager
 from managers.user_manager import UserManager
+from managers.fixed_expense import FixedExpenseManager
 from storage.database import SessionLocal
 from sqlalchemy.orm import Session
 
@@ -21,3 +22,6 @@ def get_category_manager(db: Session = Depends(get_db)):
 
 def get_expense_manager(db: Session = Depends(get_db)):
     return ExpenseManager(db)
+
+def get_fixed_expense_manager(db: Session = Depends(get_db)):
+    return FixedExpenseManager(db)
